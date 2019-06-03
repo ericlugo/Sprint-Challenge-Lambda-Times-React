@@ -28,21 +28,55 @@ Look through the application code. If you have the old Lambda Times (Applied Jav
 
 ## Self-Study/Essay Questions
 
-- [ ] What are PropTypes used for? Please describe why it's important to type check our data in JavaScript.
-- [ ] Describe a life-cycle event in React?
-- [ ] Explain the details of a Higher Order Component?
-- [ ] What are three different ways to style components in React? Explain some of the benefits of each.
+---
+
+- [x] What are PropTypes used for? Please describe why it's important to type check our data in JavaScript.
+
+PropTypes are used to validate state or prop information moving through your apps. In using PropTypes you are able to check whether any given object matches a specific data type or data shape. Type Checking your data allows you to make sure that all of the information being passed around is moving in the exact form that you are expecting it to. Having incorrect/unvalidated data moving through your app, something which is quite common when more than one developer touches any given codebase, can lead to unexpected side effects and results which is why type checking is so important.
+
+- [x] Describe a life-cycle event in React?
+
+Every component in a React application follows a cycle from when it is made (initialized and mounted to the DOM) to when it is removed (unmounted from the DOM and destroyed). This is what is referred to as the life-cycle of an event in React. The events that can be used are as follows:
+
+### Mounting Methods:
+
+`constructor()` - This is the initialization stage of the object within React. This is the only point during which you should work with an object's state directly since the state data should be immutable and, being that this is the initialization of said state data, this is the only stage during which this data can be declared manually.
+`render()` - This is the stage during which an object mounts and is added to the DOM.
+`componentDidMount()` - This method is called after the component has been mounted and is available to the DOM. This is typically the best place for API calls and any and all setup that couldn't be done without the DOM such as adding event listeners.
+
+### Updating Methods:
+
+`shouldComponentUpdate()` - Called before component re-renders if either the props or state change.
+`render` - Same as before although this time the object is already mounted. Instead the object is simply re-rendered to the prop using the renewed state or prop information.
+`componentDidUpdate()` - Called after component re-renders.
+
+### Unmounting Method:
+
+`componentWillUnmount` - This method is called right before the Object is removed from the DOM. It can be used to 'clean-up' any extra data that might be hanging around.
+NOTE: There is also an error catching method `componentDidCatch` that was recently added in React to deal with unhandled JavaScript errors. This can be used to produce fallback UI for your app.
+
+- [x] Explain the details of a Higher Order Component?
+
+A Higher Order Component (commonly know as a HOC) is a component which takes in other components and returns something based on preset logic. One common example of this is what we did in class known as conditional rendering. This means that the HOC is fed multiple components and it returns a component based on a set of guidelines laid out inside of it. For example, you can create a HOC to dynamically switch rendering from a login component to a full app. Which one is displayed is based on the logic laid out in the HOC.
+
+- [x] What are three different ways to style components in React? Explain some of the benefits of each.
+
+CSS Stylesheets: Simple & Well Established. Although typically not as powerful as the other methods, the use of a pre-processor such as SASS makes this a worthwhile option for many organizations.
+Styling Libraries (like ReactStrap and MaterialUI): Quick and easy once you're familiar with them, these libraries can help you quickly build powerful prototypes with minimal effort. You can also apply custom css to these to make them your own.
+CSS-in-JS: Fairly new but gaining popularity, css-in-js frameworks like `styled-components` and `emotion` allow your to control your styling at component level allowing for a compartmentalized separation of concerns where each item's structure, logic, and presentation are compartmentalized into a single document.
+
+---
 
 ## Project Setup
 
 Follow these steps to set up your project:
 
-- [ ] Create a forked copy of this project.
-- [ ] Add your project manager as collaborator on Github.
-- [ ] Clone your OWN version of the repository (Not Lambda's by mistake!).
-- [ ] Create a new branch: git checkout -b `<firstName-lastName>`.
-- [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
-- [ ] Push commits: git push origin `<firstName-lastName>`.
+- [x] Create a forked copy of this project.
+- [x] Add your project manager as collaborator on Github.
+- [x] Clone your OWN version of the repository (Not Lambda's by mistake!).
+- [x] Create a new branch: git checkout -b `<firstName-lastName>`.
+- [x] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
+- [x] Push commits: git push origin `<firstName-lastName>`.
 - [ ] From within the `lambdatimes` folder run `yarn` and then `yarn start`. This will open your locally hosted application in your browser. Once you are ready move onto the next steps.
 - [ ] Inside the `Content` folder you will find all 5 components that make up the content of the application. The flow goes like this: `Content > Tabs > Tab` and `Content > Cards > Card`. Follow the directions in the `Content` component to get your data ready.
 
@@ -69,3 +103,7 @@ There are multiple stretch challenges available to you, you may attempt these in
 - [ ] You will find a `Carousel` component in your Content folder. Complete this component, rendering a functional carousel. Add this component between your `Tabs` and `Cards` components within the `Content` component. Added challenge: make it so that there is infinite scroll to the right and the left.
 
 - [ ] Add a login and an HOC. Make it so that when a user clicks on the login button at the top, a login modal is shown (Use React-strap). Have a user login, validating the login credentials on the `localStorage`. Add a Higher Order Component that wraps the `Content` component, only allowing it to render once a user has logged in. For more instructions see this README: [React-Insta-Clone: Day III](https://github.com/LambdaSchool/React-Insta-Clone/blob/master/DAY_THREE_README.md#tasks-day-iii)
+
+---
+
+### This fork is maintained by: Eric SarragaLugo
